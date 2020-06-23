@@ -242,6 +242,7 @@ services:
           - PUID=${PHP_FPM_PUID}
           - PGID=${PHP_FPM_PGID}
           - LOCALE=${PHP_FPM_DEFAULT_LOCALE}
+          - TZ=${PHP_FPM_TIMEZONE}
           - http_proxy
           - https_proxy
           - no_proxy
@@ -348,6 +349,7 @@ services:
           - CHANGE_SOURCE=${CHANGE_SOURCE}
           - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
           - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
+          - TZ=${NGINX_TIMEZONE}
           - http_proxy
           - https_proxy
           - no_proxy
