@@ -1768,3 +1768,23 @@ services:
         - ${DATA_PATH_HOST}/nexus-data:/nexus-data
       #  - ${DATA_PATH_HOST}/nexus-config:/opt/sonatype/nexus/etc/jetty
       # restart: always
+
+### activemq ####################################################
+    activemq:
+      build:
+        context: ./activemq
+        args:
+            - CHANGE_SOURCE=${CHANGE_SOURCE}
+            - ACTIVEMQ_VERSION=${ACTIVEMQ_VERSION}
+            - TZ=${NGINX_TIMEZONE}
+      environment:
+        - TZ=${WORKSPACE_TIMEZONE}
+      ports:
+        - "8161:8161"
+        - "1883:1883"
+      networks:
+        - frontend
+        - backend
+      #volumes:
+        #- ${DATA_PATH_HOST}/activemq:/opt/activemq
+      # restart: always

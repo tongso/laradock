@@ -906,3 +906,7 @@ NEXUS_DOCKER_HOSTED_PORT=8082
 #Port number for docker group pull
 NEXUS_DOCKER_GROUP_PORT=8084
 NEXUS_HOST_HTTPS_PORT=8443
+
+### ActiveMQ ##################################################
+ACTIVEMQ_VERSION=5.16.0
+
