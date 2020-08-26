@@ -239,6 +239,7 @@ services:
           - INSTALL_WKHTMLTOPDF=${PHP_FPM_INSTALL_WKHTMLTOPDF}
           - INSTALL_XHPROF=${PHP_FPM_INSTALL_XHPROF}
           - INSTALL_XMLRPC=${PHP_FPM_INSTALL_XMLRPC}
+          - INSTALL_SOCKETS=${PHP_FPM_INSTALL_SOCKETS}
           - PUID=${PHP_FPM_PUID}
           - PGID=${PHP_FPM_PGID}
           - LOCALE=${PHP_FPM_DEFAULT_LOCALE}
@@ -1767,4 +1768,24 @@ services:
       volumes:
         - ${DATA_PATH_HOST}/nexus-data:/nexus-data
       #  - ${DATA_PATH_HOST}/nexus-config:/opt/sonatype/nexus/etc/jetty
+      # restart: always
+
+### activemq ####################################################
+    activemq:
+      build:
+        context: ./activemq
+        args:
+            - CHANGE_SOURCE=${CHANGE_SOURCE}
+            - ACTIVEMQ_VERSION=${ACTIVEMQ_VERSION}
+            - TZ=${NGINX_TIMEZONE}
+      environment:
+        - TZ=${WORKSPACE_TIMEZONE}
+      ports:
+        - "8161:8161"
+        - "1883:1883"
+      networks:
+        - frontend
+        - backend
+      #volumes:
+        #- ${DATA_PATH_HOST}/activemq:/opt/activemq
       # restart: always
